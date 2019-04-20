@@ -1,0 +1,1 @@
+export const CUSTOMERS_API = 'http://dev-puc-customer-system-api.us-e2.cloudhub.io/api';

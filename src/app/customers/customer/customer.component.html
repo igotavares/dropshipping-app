@@ -1,0 +1,17 @@
+<div class="place-info-box">
+  <span class="place-info-box-icon">
+      <button (click)="delete()" class="btn btn-danger btn-delete ">
+        <i class="fa fa-trash-o fa-3x" aria-hidden="true"></i>
+      </button>
+  </span> 
+  <div class="place-info-box-content" [routerLink]="['/customers', customer.id]">
+    <span class="place-info-box-text">{{customer.name + " " + customer.surname}}</span>
+    <span class="place-info-box-star">
+        <i *ngIf="customer.gender === 'M'" class="fa fa-male"></i>
+        <i *ngIf="customer.gender === 'F'" class="fa fa-female"></i>
+    </span>
+    <span class="place-info-box-detail">Email: {{customer.email}}</span>
+    <span class="place-info-box-detail">Data de Nascimento: {{customer.birthday}}</span> 
+    <span class="place-info-box-detail">CPF: {{customer.documentNumber}}</span>
+  </div>
+</div>

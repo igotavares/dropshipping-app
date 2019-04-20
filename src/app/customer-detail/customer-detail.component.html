@@ -1,0 +1,148 @@
+<section class="content-header">
+</section>
+
+  <!--INICIO DO CONTEUDO-->
+
+  <section class="content">
+    <section class="invoice">
+          <form [formGroup]="customerForm" novalidate>
+            <div class="row">
+              <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="fa fa-user"></i> Cliente
+                </h2>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3 col-xs-12">
+                  <mt-input-container errorMessage="Campo obrigatório" label="name" >
+                    <input class="form-control" formControlName="name" autocomplete="off" placeholder="Name">
+                  </mt-input-container>                  
+              </div>
+              <div class="col-sm-4 col-xs-12">
+                  <mt-input-container errorMessage="Campo obrigatório" label="surname" >
+                      <input class="form-control" formControlName="surname" autocomplete="off" placeholder="Sobrenome">
+                  </mt-input-container>               
+              </div>
+              <div class="col-sm-4 col-xs-12">
+                <mt-input-container errorMessage="Campo obrigatório" label="documentNumber" >
+                    <input class="form-control" formControlName="documentNumber" autocomplete="off" placeholder="CPF">
+                </mt-input-container>               
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-2 col-xs-12">
+                  <div class="form-group">
+                      <mt-radio [options]="genderOptions"  formControlName="gender" ></mt-radio>
+                  </div>
+              </div>
+              <div class="col-sm-5 col-xs-12">
+                  <mt-input-container errorMessage="Campo obrigatório" label="email" >
+                      <input class="form-control" formControlName="email" autocomplete="off" placeholder="e-mail">
+                  </mt-input-container>               
+              </div>
+              <div class="col-sm-5 col-xs-12">
+                  <mt-input-container errorMessage="Campo obrigatório" label="birthday" >
+                      <input class="form-control" formControlName="birthday" autocomplete="off" placeholder="Aniversário">
+                  </mt-input-container>               
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2 col-xs-12">
+                    <mt-checkbox formControlName="acceptMarketing" label="Aceita Marketing"></mt-checkbox>              
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <mt-input-container label="company" >
+                        <input class="form-control" formControlName="company" autocomplete="off" placeholder="Empresa">
+                    </mt-input-container>               
+                </div>
+                
+                <div class="col-sm-7 col-xs-12">
+                    <mt-input-container label="comments" >
+                        <input class="form-control" formControlName="comments" autocomplete="off" placeholder="comments">
+                    </mt-input-container>               
+                </div>  
+            </div>
+            
+            <div formGroupName="contact" >
+              <div class="row">
+                <div class="col-xs-12">
+                  <p class="lead">Contato:</p>
+                </div>
+                <div class="col-sm-2 col-xs-12">
+                    <mt-input-container label="telephone" >
+                      <input class="form-control" formControlName="telephone" autocomplete="off" placeholder="Telefone">
+                    </mt-input-container>
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                  <mt-input-container label="mobile" >
+                    <input class="form-control" formControlName="mobile" required autocomplete="off" placeholder="Celular">
+                  </mt-input-container>
+                </div>
+              </div>
+            </div>
+
+            <div formGroupName="address" >
+              <div class="row">
+                <div class="col-xs-12">
+                  <p class="lead">Endereço:</p>
+                </div>
+                <div class="col-sm-2 col-xs-12">
+                    <mt-input-container errorMessage="Campo obrigatório" label="zipCode" >
+                      <input class="form-control" formControlName="zipCode" required autocomplete="off" placeholder="CEP">
+                    </mt-input-container>
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                  <mt-input-container errorMessage="Campo obrigatório" label="street" >
+                    <input class="form-control" formControlName="street" required autocomplete="off" placeholder="Endereço">
+                  </mt-input-container>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                  <mt-input-container errorMessage="Campo obrigatório e somente números" label="number" >
+                    <input class="form-control" formControlName="number" pattern="^[0-9]*$" autocomplete="off" placeholder="Número">
+                  </mt-input-container>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                  <mt-input-container errorMessage="Campo obrigatório" label="complement" >
+                    <input class="form-control" formControlName="complement" autocomplete="off" placeholder="Complemento">
+                  </mt-input-container>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-sm-3 col-xs-12">
+                    <mt-input-container errorMessage="Campo obrigatório" label="country" >
+                      <input class="form-control" formControlName="country" required autocomplete="off" placeholder="País">
+                    </mt-input-container>
+                  </div>
+                  <div class="col-sm-3 col-xs-12">
+                    <mt-input-container errorMessage="Campo obrigatório" label="state" >
+                      <input class="form-control" formControlName="state" autocomplete="off" placeholder="Estado">
+                    </mt-input-container>
+                  </div>
+                  <div class="col-sm-3 col-xs-12">
+                    <mt-input-container errorMessage="Campo obrigatório" label="town" >
+                      <input class="form-control" formControlName="town" autocomplete="off" placeholder="Cidade">
+                    </mt-input-container>
+                  </div>
+              </div>
+            </div>
+
+            
+          </form>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <button (click)="save(customerForm.value)" 
+                      [disabled]="!customerForm.valid || customer?.contacts?.lenght === 0" 
+                      class="btn btn-success pull-right"> Salvar
+              </button>
+            </div>
+          </div>
+
+      </section>
+  </section>
+  <!-- FIM DO CONTEUDO-->

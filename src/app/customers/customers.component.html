@@ -1,0 +1,37 @@
+<section class="content-header">
+  <h1>
+    Todos os Clientes
+    <button [routerLink]="['/customers/new']" 
+      class="btn btn-success pull-right">Adicionar
+    </button>
+    <a (click)="toggleSearch()" class="search-link pull-right">
+        <span *ngIf="iptSearch.value" class="search-lbl" ><small>{{iptSearch.value}}</small></span><i class="fa fa-search"></i>
+    </a>
+  </h1>
+
+  <div class="row">
+    <div class="col-xs-12 search-bar" [@toggleSearch]="searchBarState" > 
+      <form [formGroup]="searchForm" >
+        <div class="form-group">
+          <input type="text"  #iptSearch formControlName="searchControl" class="form-control" placeholder="O que você está procurando">
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+
+  <div class="row">
+
+    <div *ngFor="let customer of customers" class="col-sm-6 col-xs-12">
+      <mt-customer [customer]="customer" (deleteEvent)="delete($event)" ></mt-customer>
+    </div>
+    <div *ngIf="customers?.lenght === 0" class="col-xs-12">
+      <p class="lead text-center">
+        Não foram encontrados itens para a sua busca
+      </p>
+    </div>
+  </div>
+
+</section>
