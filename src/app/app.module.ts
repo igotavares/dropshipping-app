@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { LocationStrategy, HashLocationStrategy } from '@angular/common'
 
 import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
@@ -54,7 +55,8 @@ import { AuthInterceptor } from './security/auth.interceptor';
     RouterModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [LoggedInGuard, CustomersService,
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
+              LoggedInGuard, CustomersService,
               NotificationService, LoginService,
               {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
               {provide: ErrorHandler, useClass: ApplicationErrorHandler},
